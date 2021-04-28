@@ -29,12 +29,14 @@
 		align-items: center;
 	}
 	
-	#buttons {
+	#controlPanel {
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
 		justify-content: space-around;
 		align-items: center;
+		color: rgba(255,247,247,1.00);
+		
 	}
 	
 	#charts {
