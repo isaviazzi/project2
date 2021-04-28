@@ -34,16 +34,17 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		flex-shrink: shrink;
-		justify-content: space-between;
+		justify-content: space-around;
 		align-items: center;
-		width: 100%;
+		width: 90%;
+		padding: 50px 50px;
+		
 	}
 	
 	#Left{
 		background-color: black;
-		/* justify-content: space-between;
-		align-items: center; */
-		width: 49%;
+		width: 48%;
+		padding: 1%;
 
 	}
 	
@@ -55,7 +56,8 @@
 	
 	#Right{
 		background-color: black;
-		width: 49%;
+		width: 48%;
+		padding: 1%;
 	}
 	
 	#rightTitle{
@@ -66,7 +68,6 @@
 	}
 	
 	#workButton {
-		/* display: flex; */
 		background-color: pink;
 		padding: 10px 20px;
 	  color: rgba(255,247,247,1.00);
@@ -80,6 +81,12 @@
 	  transition-property: transform;
 	  margin: 30px;
 		}
+		
+	#workButton:hover, 
+	#workButton:focus, 
+	#workButton:active {
+		transform: scale(1.1);	
+		}	
 		
 	#homeButton {
 		background-color: pink;
@@ -96,9 +103,9 @@
 	  margin: 30px;
 	}
 	
-	#workButton:hover, 
-	#workButton:focus, 
-	#workButton:active {
+	#homeButton:hover, 
+	#homeButton:focus, 
+	#homeButton:active {
 		transform: scale(1.1);	
 		}
 
