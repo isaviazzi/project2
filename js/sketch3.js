@@ -209,8 +209,19 @@ function loadGraph(){
           }
         }]
       }
+    },
+    plugins: {
+          legend: {
+            
+              display: true,
+              labels: {
+                  color: 'rgb(255, 99, 132)',
+                  
+              },
+              position: 'below',
+              align: 'end',
+          }
     }
-
   })
 }
 
@@ -236,15 +247,29 @@ function loadGraph2(){
     },
 
     options: {
+            
       scales: {
         yAxes: [{
           ticks: {
             beginAtZero: true,
             min: 0,
             max: maxValue,
-            stepSize: stepSizeValue
+            stepSize: stepSizeValue,
           }
         }]
+      },
+      
+      plugins: {
+            legend: {
+              
+                display: true,
+                labels: {
+                    color: 'rgb(255, 99, 132)',
+                    
+                },
+                position: 'below',
+                align: 'end',
+            }
       }
     }
 
