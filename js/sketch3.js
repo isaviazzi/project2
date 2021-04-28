@@ -129,8 +129,8 @@ function workCompare(){
   }
 
     //update the label text
-  locationTitle2019 = "Work 2019";
-  locationTitle2020 = "Work 2020";
+  locationTitle2019 = "Hours at work";
+  locationTitle2020 = "Hours at work";
   loadGraph();
   loadGraph2();
 
@@ -160,8 +160,8 @@ function homeCompare(){
 
   }
   //update the label text
-  locationTitle2019 = "Home 2019";
-  locationTitle2020 = "Home 2020";
+  locationTitle2019 = "Hours at home";
+  locationTitle2020 = "Hours at home";
   loadGraph();
   loadGraph2();
 
