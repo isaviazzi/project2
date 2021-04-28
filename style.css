@@ -22,9 +22,16 @@
 		font-family: Helvetica, Arial, "sans-serif";
 		font-size: 50pt;
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		flex-wrap: nowrap;
-		/* flex-shrink: shrink; */
+		justify-content: space-around;
+		align-items: center;
+	}
+	
+	#buttons {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
 		justify-content: space-around;
 		align-items: center;
 	}
