@@ -44,6 +44,10 @@ let friendsArray =[];
 let commuteArray =[];
 let walkArray =[];
 
+
+let maxValue;
+let stepSizeValue;
+
 //PRELOAD////////////////////////////////////////////////////////////////////////////////
 
 function preload () {
@@ -75,7 +79,7 @@ function setup() {
 
   locationTitle2019 = "";
   locationTitle2020 = "";
-  
+
 
   //load the dates first
   for (var i= 0; i < firstTable.getRowCount(); i++){
@@ -104,10 +108,11 @@ function setup() {
 
 //clear the location arrays, update with new data, then call the chart functions to display new data
 function workCompare(){
-  
+  maxValue = 200;
+  stepSize= 50;
   locationArray2019.splice(0, locationArray2019.length);
   locationArray2020.splice(0, locationArray2020.length);
-  
+
   for (var i= 0; i < firstTable.getRowCount(); i++){
 
     location2019 = firstTable.getNum(i, 'work');
@@ -133,6 +138,9 @@ function workCompare(){
 
 //clear the location arrays, update with new data, then call the chart functions to display new data
 function homeCompare(){
+  maxValue = 800;
+  stepSize= 100;
+  
   locationArray2019.splice(0, locationArray2019.length);
   locationArray2020.splice(0, locationArray2020.length);
   for (var i= 0; i < firstTable.getRowCount(); i++){
@@ -142,6 +150,7 @@ function homeCompare(){
     locationArray2019.push(location2019);
 
   }
+
   for (var i= 0; i < secondTable.getRowCount(); i++){
 
     location2020 = secondTable.getNum(i, 'home');
@@ -150,9 +159,6 @@ function homeCompare(){
 
 
   }
-  
-
-  
   //update the label text
   locationTitle2019 = "Home 2019";
   locationTitle2020 = "Home 2020";
@@ -197,8 +203,9 @@ function loadGraph(){
           ticks: {
             beginAtZero: true,
             min: 0,
-            max: 800,
-            
+            max: maxValue,
+            stepSize: stepSizeValue
+
           }
         }]
       }
@@ -234,7 +241,8 @@ function loadGraph2(){
           ticks: {
             beginAtZero: true,
             min: 0,
-            max: 800,
+            max: maxValue,
+            stepSize: stepSizeValue
           }
         }]
       }
