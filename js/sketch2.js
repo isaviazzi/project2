@@ -194,9 +194,9 @@ function loadGraph(){
         yAxes: [{
           ticks: {
             beginAtZero: true
-            min: 0,
-            max: 150,
-            stepSize: 1 // 1 - 2 - 3 ...
+            // min: 0,
+            // max: 150,
+            // stepSize: 1 // 1 - 2 - 3 ...
           }
         }]
       }
