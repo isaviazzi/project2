@@ -23,6 +23,7 @@
 		font-size: 50pt;
 		display: flex;
 		flex-direction: row;
+		flex-flow: row-reverse;
 		flex-wrap: nowrap;
 		justify-content: space-around;
 		align-items: center;
