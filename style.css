@@ -15,19 +15,55 @@
 
 
 	body {
-		padding: 20px;
+		width: 90%;
+		margin: 100px 2%;
 		background-color: black;
 		font-family: Helvetica, Arial, "sans-serif";
 		font-size: 50pt;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	#title {
+		color: white;
+		margin-bottom: 50px;
+		
+	}
+	
+	.skills, .langs {
+  text-transform: uppercase;
+  font-size: 4vw;
+  display: inline-block;
+  white-space: nowrap;
+  animation: floatText 75s infinite linear;
+  /* padding-left: 100%; /*Initial offset, which places the text off-screen */
+  color:#ada97d;
+}
+
+@keyframes floatText {
+  to {
+    transform: translateX(-100%);
+  }
+}
+.skills:hover, .langs:hover  {
+  animation: floatText 250s infinite linear;
+}
+
+	
+	#container {
+		width: 100%;
 		display: flex;
 		flex-direction: row;
 		flex-flow: row-reverse;
 		flex-wrap: nowrap;
 		justify-content: space-around;
 		align-items: center;
+		
 	}
-	
-	#controlPanel {
+	/* #controlPanel {
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
@@ -35,23 +71,23 @@
 		align-items: center;
 		color: rgba(255,247,247,1.00);
 		
-	}
+	} */
 	
 	#charts {
+		width: 90%;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		
+		flex-shrink: shrink;
 		justify-content: space-around;
 		align-items: center;
-		width: 90%;
-		min-height: 200px;
-		padding: 50px 50px;
+		width: 100%;
+		padding: 0px 30px;
 		
 	}
 	
 	#Left{
-		background-color: black;
+		/* background-color: black; */
 		width: 48%;
 		padding: 1%;
 
@@ -64,7 +100,7 @@
 	}
 	
 	#Right{
-		background-color: black;
+		/* background-color: black; */
 		width: 48%;
 		padding: 1%;
 	}
@@ -77,6 +113,7 @@
 	}
 	
 	#workButton {
+		
 		background-color: pink;
 		padding: 10px 20px;
 	  color: rgba(255,247,247,1.00);
@@ -118,3 +155,8 @@
 		transform: scale(1.1);	
 		}
 
+.images{
+		filter: invert() ;
+	
+	
+}

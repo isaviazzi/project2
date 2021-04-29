@@ -33,6 +33,7 @@ let locationTitle2020;
 let locationTitle2019;
 
 //buttons
+
 let workButton;
 let homeButton;
 
@@ -69,6 +70,8 @@ function setup() {
 
 
   //create the buttons. when pressed they trigger their functions
+
+  
   workButton = createButton("Work");
   workButton.mousePressed(workCompare);
   workButton.id('workButton');
@@ -215,11 +218,11 @@ function loadGraph(){
             
               display: true,
               labels: {
-                  color: 'rgb(255, 99, 132)',
+                  color: 'rgb(255, 99, 132)'
                   
               },
-              position: 'below',
-              align: 'end',
+              // position: 'below',
+              // align: 'end'
           }
     }
   })
@@ -227,9 +230,11 @@ function loadGraph(){
 
 //graph 2
 function loadGraph2(){
+  
   let ctx = document.getElementById('secondTable').getContext('2d');
-
+  
   let secondTable = new Chart (ctx, {
+    
     type: 'line',
     data: {
       labels: dateArray2020,
@@ -263,12 +268,11 @@ function loadGraph2(){
             legend: {
               
                 display: true,
+                // position: 'below',
+                // align: 'end',
                 labels: {
-                    color: 'rgb(255, 99, 132)',
-                    
+                  color: 'rgb(255, 99, 132)'
                 },
-                position: 'below',
-                align: 'end',
             }
       }
     }
