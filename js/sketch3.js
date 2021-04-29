@@ -82,31 +82,29 @@ function setup() {
   commuteButton = createButton("Commute");
   commuteButton.mousePressed(commuteCompare);
   commuteButton.id('commuteButton');
+  
+  
 
   locationTitle2019 = "";
   locationTitle2020 = "";
   
-  colorMode(HSB);
-  slider = createSlider(0, 255, 0);
-  slider.style('width', '90%');
-  slider.style('background', 'red');
-  slider.id('slider');
+
+  // slider = createSlider(0, 255, 0);
+  // slider.style('width', '90%');
+  // slider.style('background', 'red');
+  // slider.id('slider');
 
   //load the dates first
   for (var i= 0; i < firstTable.getRowCount(); i++){
-
     date2019 = firstTable.getString(i, 'date');
     dateArray2019.push(date2019);
-
-
   }
 
   for (var i= 0; i < secondTable.getRowCount(); i++){
-
     date2020 = secondTable.getString(i, 'date');
     dateArray2020.push(date2020);
-
   }
+  
   print(location2020)
 
   loadGraph();
