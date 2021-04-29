@@ -36,7 +36,9 @@ let locationTitle2019;
 
 let workButton;
 let homeButton;
+let friendsButton;
 
+let slider;
 
 let schoolArray =[];
 let workArray =[];
@@ -61,34 +63,39 @@ function preload () {
 
 function setup() {
   noCanvas();
-  // canvas = createCanvas(500, 500);
-  // canvas.id("p5canvas");
-  // canvas.position(0, 0);
-  // canvas.style("z-index", "-1");
-  // background(0);
-
-
-
+  
   //create the buttons. when pressed they trigger their functions
 
   
   workButton = createButton("Work");
   workButton.mousePressed(workCompare);
   workButton.id('workButton');
-
+  
   homeButton = createButton("Home");
   homeButton.mousePressed(homeCompare);
   homeButton.id('homeButton');
+  
+  friendsButton = createButton("Friends");
+  friendsButton.mousePressed(friendsCompare);
+  friendsButton.id('friendsButton');
+  
+  commuteButton = createButton("Commute");
+  commuteButton.mousePressed(commuteCompare);
+  commuteButton.id('commuteButton');
 
   locationTitle2019 = "";
   locationTitle2020 = "";
-
+  
+  colorMode(HSB);
+  slider = createSlider(0, 255, 0);
+  slider.style('width', '90%');
+  slider.style('background', 'red');
+  slider.id('slider');
 
   //load the dates first
   for (var i= 0; i < firstTable.getRowCount(); i++){
 
     date2019 = firstTable.getString(i, 'date');
-
     dateArray2019.push(date2019);
 
 
@@ -97,8 +104,6 @@ function setup() {
   for (var i= 0; i < secondTable.getRowCount(); i++){
 
     date2020 = secondTable.getString(i, 'date');
-
-
     dateArray2020.push(date2020);
 
   }
@@ -126,7 +131,6 @@ function workCompare(){
   for (var i= 0; i < secondTable.getRowCount(); i++){
 
     location2020 = secondTable.getNum(i, 'work');
-
     locationArray2020.push(location2020);
 
   }
@@ -170,10 +174,70 @@ function homeCompare(){
 
 }
 
+//clear the location arrays, update with new data, then call the chart functions to display new data
+function friendsCompare(){
+  maxValue = 40;
+  stepSize= 5;
+  locationArray2019.splice(0, locationArray2019.length);
+  locationArray2020.splice(0, locationArray2020.length);
+
+  for (var i= 0; i < firstTable.getRowCount(); i++){
+
+    location2019 = firstTable.getNum(i, 'friends');
+    locationArray2019.push(location2019);
+
+  }
+
+  for (var i= 0; i < secondTable.getRowCount(); i++){
+
+    location2020 = secondTable.getNum(i, 'friends');
+    locationArray2020.push(location2020);
+
+  }
+
+    //update the label text
+  locationTitle2019 = "Hours with friends";
+  locationTitle2020 = "Hours with friends";
+  loadGraph();
+  loadGraph2();
+
+}
+
+//clear the location arrays, update with new data, then call the chart functions to display new data
+function commuteCompare(){
+  maxValue = 50;
+  stepSize= 5;
+  locationArray2019.splice(0, locationArray2019.length);
+  locationArray2020.splice(0, locationArray2020.length);
+
+  for (var i= 0; i < firstTable.getRowCount(); i++){
+
+    location2019 = firstTable.getNum(i, 'commute');
+    locationArray2019.push(location2019);
+
+  }
+
+  for (var i= 0; i < secondTable.getRowCount(); i++){
+
+    location2020 = secondTable.getNum(i, 'commute');
+    locationArray2020.push(location2020);
+
+  }
+
+    //update the label text
+  locationTitle2019 = "Hours commuting";
+  locationTitle2020 = "Hours commuting";
+  loadGraph();
+  loadGraph2();
+
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 
 function draw() {
 
+  let val = slider.value();
+  background(val, 100, 100, 1);
 
 }
 
@@ -201,29 +265,30 @@ function loadGraph(){
     },
 
     options: {
+            
       scales: {
         yAxes: [{
           ticks: {
             beginAtZero: true,
             min: 0,
             max: maxValue,
-            stepSize: stepSizeValue
-
+            stepSize: stepSizeValue,
           }
         }]
-      }
-    },
-    plugins: {
-          legend: {
-            
-              display: true,
-              labels: {
-                  color: 'rgb(255, 99, 132)'
-                  
-              },
-              // position: 'below',
-              // align: 'end'
+      },
+      
+      legend: {
+          display: true,
+          position: 'bottom',
+          align: 'start',
+          labels: {
+            color: 'rgb(255, 99, 132)'
           }
+      },
+      
+      plugins: {
+            
+      }
     }
   })
 }
@@ -243,11 +308,8 @@ function loadGraph2(){
         fill: false,
         data: locationArray2020,
         backgroundColor: 'rgba(255, 99, 132, 0.1)',
-
         borderColor: 'rgba(255, 99, 132, 0.75)',
         borderWidth: 1
-
-
       }]
     },
 
@@ -264,16 +326,17 @@ function loadGraph2(){
         }]
       },
       
+      legend: {
+          display: true,
+          position: 'bottom',
+          align: 'end',
+          labels: {
+            color: 'rgb(255, 99, 132)'
+          }
+      },
+      
       plugins: {
-            legend: {
-              
-                display: true,
-                // position: 'below',
-                // align: 'end',
-                labels: {
-                  color: 'rgb(255, 99, 132)'
-                },
-            }
+            
       }
     }
 
